@@ -1,0 +1,13 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+{% if album_list %}
+    <ul>
+    {% for album in album_list %}
+    <li><a href="{% url 'disks:detail' album.id %}">{{ album.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No albums in the database.</p>
+{% endif %}

@@ -1,0 +1,12 @@
+{% if album.track_set.all %}
+    {% for track in album.track_set.all %}
+        <ul>{{ track.name }}</ul>
+        {{ track.composer }}
+        {{ track.milliseconds }}
+        {{ track.bytes }}
+        {{ track.UnitPrice }}
+        </itemize>
+    {% endfor %}
+{% else %}
+    <p>No track in the album.</p>
+{% endif %}
