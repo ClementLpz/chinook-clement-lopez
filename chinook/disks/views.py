@@ -12,4 +12,11 @@ def album(request):
 
 def detail(request, album_id):
     album = get_object_or_404(Album, pk=album_id)
-    return render(request, 'disks/detail.html', {'album': album})
+    context = {'album': album}
+    return render(request, 'disks/detail.html', context)
+
+def search_album(request):
+    form = AlbumForm(request.GET)
+    album_filtered_list = Album.objects.filter(title__contains='a') # Just a test for the 'contains', I want to put title__contains=form
+    context = {'album_filtered_list': album_filtered_list}
+    return render(request, 'disks/album.html', context)
