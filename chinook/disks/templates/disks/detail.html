@@ -1,3 +1,5 @@
+<li><a href="{% url 'disks:album' %}"> Return Home </a></li>
+
 {% if album.track_set.all %}
     {% for track in album.track_set.all %}
         <h1>{{ track.name }} : </h1>

@@ -17,21 +17,48 @@
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.3s ease-in-out;
     }
-          
-    input[type=text]:active {
+    
+    
+    input[type=text]:hover {
         width: 90%;
     }
+
+    a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+
+    background-color: #008CBA; 
+    color: white; 
+    border: 2px solid #008CBA;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    }
+
+    a.button:hover {
+    background-color: white;
+    color: black;
+    }
+
 </style>
 
 
-<form action="{% url 'disks:search_album' %}" method="GET">>
-    <input type="text" name="search" 
-        placeholder="Search an album...">
+<a href="{% url 'disks:album' %}" class="button">Return Home</a> <br> <br>
+
+<form action="{% url 'disks:album' %}" method="POST">
+{% csrf_token %} {{ form }} 
 </form>
 
-{% if album_list %}
+{% if album_filtered_list %}
     <ul>
-    {% for album in album_list %}
+    {% for album in album_filtered_list %}
     <li><a href="{% url 'disks:detail' album.id %}">{{ album.title }}</a></li>
     {% endfor %}
     </ul>
